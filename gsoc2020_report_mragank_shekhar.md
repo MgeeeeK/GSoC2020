@@ -19,10 +19,6 @@ From early on, `PySAL` was designed with the focus of performing vector-based sp
 
 Taking this into consideration, my main motive was to design and implement a lightweight interface which will provide the functionality for streamlining raster data access and making it more accessible to build the data structure accepted by the analytical methods of the PySAL library (mainly `libpysal.weights.W/WSP` objects) from accessed raster data (which will be an instance of `xarray.DataArray`). Ultimately, this functionality will open up the use of analytical methods like `esda`, `spatial regression` over raster data.
 
-Since in this report we talk a lot about raster data and weights object, let's look at the visualization of these 2 things. Weights object in `PySAL` is a graph like structure which expresses the relationship of a spatial point with its neighboring points. We can now take a look at the visual example below:
-![Fig. 1](https://github.com/MgeeeeK/GSoC2020/blob/master/plot1.png)
-_This figure consist of 2 plots of weights object (which are listed below) and 2 of raster data. These weights objects were obtained using a sliced raster. We can see the relationship of spatial points is different in `Rook` and `Queen` contiguity, interface dealt with `nodatavals` while creating the weights object thats why we are seeing those empty pixels._  
-![Fig. 2](https://github.com/MgeeeeK/GSoC2020/blob/master/plot2.svg)
 Following were the major milestones that we planned to finish for successfully building raster interface:
 
 - Design quality APIs which followed existing structure used across PySAL.
@@ -31,6 +27,11 @@ Following were the major milestones that we planned to finish for successfully b
 - Integrate the interface with PySAL without causing any disturbance to other parts of the library.
 - Study performance and memory efficiency of the conversion methods and optimize the interface to support computations for large raster datasets.
 - Add proper documentation, tests, and an example notebook.
+
+Since in this report we'll talk a lot about raster data and weights object, let's look at the visualization of these 2 things. Weights object in `PySAL` is a graph like structure which expresses the relationship of a spatial point with its neighboring points. We can now take a look at the visual example below:
+![Fig. 1](https://user-images.githubusercontent.com/40512095/91647853-83b96b80-ea7d-11ea-8002-641ce7dc621d.png)
+_This figure consist of 2 plots of weights object (which are listed below) and 2 of raster data. These weights objects were obtained using a sliced raster. We can see the relationship of spatial points is different in `Rook` and `Queen` contiguity, interface dealt with `nodatavals` while creating the weights object thats why we are seeing those empty pixels._  
+![Fig. 2](https://user-images.githubusercontent.com/40512095/91647893-325dac00-ea7e-11ea-84d3-ac6882fc5231.png)
 
 _The development timeline for building the project was divided into 3 phases:_
 
@@ -61,11 +62,11 @@ Blog posts published:
 
 Contents:
 
-1. [I/O dependency for accessing raster](gsoc2020_report_mragank_shekhar.md#io-dependency-for-accessing-raster)
-2. [Planning main functionality for the interface](gsoc2020_report_mragank_shekhar.md#)
-3. [Designing interface's API (_weights builder_)](gsoc2020_report_mragank_shekhar.md#)
-4. [Designing interface's API (_return journey to `xarray.DataArray`_)](gsoc2020_report_mragank_shekhar.md#)
-5. [Iterative approach for API design](gsoc2020_report_mragank_shekhar.md#)
+1. [I/O dependency for accessing raster](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#io-dependency-for-accessing-raster)
+2. [Planning main functionality for the interface](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#planning-main-functionality-for-the-interface)
+3. [Designing interface's API (_weights builder_)](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#designing-interfaces-api-weights-builder)
+4. [Designing interface's API (_return journey to `xarray.DataArray`_)](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#designing-interfaces-api-return-journey-to-xarraydataarray)
+5. [Iterative approach for API design](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#iterative-approach-for-api-design)
 
 **Detailed Summary**
 
@@ -151,13 +152,13 @@ Blog posts published:
 - [Coding Period: Second Phase Part 1](https://mgeeeek.github.io/posts/2020/07/coding-period-second-phase-part-1/)
 - [Coding Period: Second Phase Part 2](https://mgeeeek.github.io/posts/2020/07/coding-period-second-phase-part-2/)
 
-Detailed Summary Contents:
+Contents:
 
-1. [Refactoring weights object](gsoc2020_report_mragank_shekhar.md#)
-2. [Refactoring `toDataArray` method](gsoc2020_report_mragank_shekhar.md#)
-3. [Adding distance-based weights object support](gsoc2020_report_mragank_shekhar.md#)
-4. [Adding tests, documentations and example notebook](gsoc2020_report_mragank_shekhar.md#)
-5. [Identifying areas to optimize](gsoc2020_report_mragank_shekhar.md#)
+1. [Refactoring weights object](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#refactoring-weights-object)
+2. [Refactoring `toDataArray` method](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#refactoring-todataarray-method-making-it-work-with-only-weights-object-and-independent-of-metadata)
+3. [Adding distance-based weights object support](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#adding-distance-based-weights-object-support)
+4. [Finalzing base raster interface](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#adding-tests-documentation-example-notebook-and-finalizing-base-raster-interface)
+5. [Identifying areas to optimize](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#identifying-areas-to-optimize-for-adding-support-for-large-rasters)
 
 **Detailed Summary**
 
@@ -258,11 +259,11 @@ Blog posts published:
 
 - [Coding Period: Last Phase Part 1](https://mgeeeek.github.io/posts/2020/08/coding-period-last-phase-part-1/).
 
-Detailed Summary Contents:
+Contents:
 
-1. [Moving on from `lat2SW`-based sparse weight builder](gsoc2020_report_mragank_shekhar.md#)
-2. [Optimizing the addition of higher-order neighbors](gsoc2020_report_mragank_shekhar.md#)
-3. [Adding visualization support for the interface](gsoc2020_report_mragank_shekhar.md#)
+1. [Moving on from `lat2SW`-based sparse weight builder](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#moving-on-from-lat2sw-based-which-uses-dia_matrix-to-new-coo_matrix-based-sparse-weight-builder)
+2. [Optimizing the addition of higher-order neighbors](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#optimizing-the-addition-of-higher-order-neighbors)
+3. [Adding visualization support for the interface](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#adding-visualization-support-for-the-interface)
 
 **Detailed Summary**
 
@@ -289,9 +290,9 @@ Detailed Summary Contents:
      - **Issue:** [higher_order weights of <= k](https://github.com/pysal/libpysal/issues/313)
 
    Since both approaches are different from each other we added `include_nas` argument which if `True`, computes weights using the first approach, and if `False` the builder uses the second approach. We can take a look at the visual example below which explains this more intuitively.
-   ![Fig. 3](https://github.com/MgeeeeK/GSoC2020/blob/master/plot31.svg)
+   ![Fig. 3](https://user-images.githubusercontent.com/40512095/91647908-7b156500-ea7e-11ea-9785-a7745bd28edc.png)
    _Here we used `testDataArray` method to create a small raster data filled with random and missing values. `Fig. 2` shows the `Rook` contiguity with `k=1` which means all first-order rook neighbors are selected. `Fig. 3` shows the `Rook` contiguity with `k=2` but with `include_nas=False` which means all `non-missing` first and second-order rook neighbors are selected (this uses the second approach as described previously). `include_nas` is `True` for `Fig. 4`, we can see that in this figure all the first order neighbors are selected but while selecting second order neighbors, the method takes consideration of (missing + nonmissing) first-order neighbors._
-   ![Fig. 4](https://github.com/MgeeeeK/GSoC2020/blob/master/plot32.svg)
+   ![Fig. 4](https://user-images.githubusercontent.com/40512095/91647911-7d77bf00-ea7e-11ea-844e-8dd547057a35.png)
    After completion of these methods, a pull request was created targeting the master branch of `libpysal` which added optimized weights builder and `higher_order` functionality. This pull request describes how these approaches are different from each other:
 
    - **[open]** [Optimized raster-based weights builder](https://github.com/pysal/libpysal/pull/343)
@@ -302,7 +303,7 @@ Detailed Summary Contents:
 
    Along with optimization work, we also worked on adding the support for plotting functionality for a raster-based weight object. This required some changes inside the `plot_spatial_weights` method, mainly making it work with sparse weight objects instead of dense weight objects and adding a `da` argument for passing `DataArray` object.
 
-   - **issue:** **[open]** [plotting for `libpysal` raster functionality](https://github.com/pysal/splot/issues/112)
+   - **Issue:** **[open]** [plotting for `libpysal` raster functionality](https://github.com/pysal/splot/issues/112)
    - **PR:** **[open]** [Added raster weights plotting functionality](https://github.com/pysal/splot/pull/113)
 
    The visualization aspect of the project is still in progress, once this pull request gets reviewed. I'll add more enhancements which are listed in the issue.
