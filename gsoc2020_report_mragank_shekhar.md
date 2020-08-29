@@ -62,11 +62,11 @@ Blog posts published:
 
 Contents:
 
-1. [I/O dependency for accessing raster](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#io-dependency-for-accessing-raster)
-2. [Planning main functionality for the interface](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#planning-main-functionality-for-the-interface)
-3. [Designing interface's API (_weights builder_)](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#designing-interfaces-api-weights-builder)
-4. [Designing interface's API (_return journey to `xarray.DataArray`_)](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#designing-interfaces-api-return-journey-to-xarraydataarray)
-5. [Iterative approach for API design](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#iterative-approach-for-api-design)
+1. [I/O dependency for accessing raster](https://github.com/MgeeeeK/GSoC2020/blob/master/gsoc2020_report_mragank_shekhar.md#io-dependency-for-accessing-raster)
+2. [Planning main functionality for the interface](https://github.com/MgeeeeK/GSoC2020/blob/master/gsoc2020_report_mragank_shekhar.md#planning-main-functionality-for-the-interface)
+3. [Designing interface's API (_weights builder_)](https://github.com/MgeeeeK/GSoC2020/blob/master/gsoc2020_report_mragank_shekhar.md#designing-interfaces-api-weights-builder)
+4. [Designing interface's API (_return journey to `xarray.DataArray`_)](https://github.com/MgeeeeK/GSoC2020/blob/master/gsoc2020_report_mragank_shekhar.md#designing-interfaces-api-return-journey-to-xarraydataarray)
+5. [Iterative approach for API design](https://github.com/MgeeeeK/GSoC2020/blob/master/gsoc2020_report_mragank_shekhar.md#iterative-approach-for-api-design)
 
 **Detailed Summary**
 
@@ -133,7 +133,7 @@ Contents:
 
 **Quick Overview**
 
-Main goals achieved during this phase:
+Main goals achieved:
 
 - Restructured interface by aligning the methods with future weights object design.
 - Made `toDataArray` method work independent of raster metadata.
@@ -154,11 +154,11 @@ Blog posts published:
 
 Contents:
 
-1. [Refactoring weights object](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#refactoring-weights-object)
-2. [Refactoring `toDataArray` method](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#refactoring-todataarray-method-making-it-work-with-only-weights-object-and-independent-of-metadata)
-3. [Adding distance-based weights object support](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#adding-distance-based-weights-object-support)
-4. [Finalzing base raster interface](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#adding-tests-documentation-example-notebook-and-finalizing-base-raster-interface)
-5. [Identifying areas to optimize](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#identifying-areas-to-optimize-for-adding-support-for-large-rasters)
+1. [Refactoring weights object](https://github.com/MgeeeeK/GSoC2020/blob/master/gsoc2020_report_mragank_shekhar.md#refactoring-weights-object)
+2. [Refactoring `toDataArray` method](https://github.com/MgeeeeK/GSoC2020/blob/master/gsoc2020_report_mragank_shekhar.md#refactoring-todataarray-method-making-it-work-with-only-weights-object-and-independent-of-metadata)
+3. [Adding distance-based weights object support](https://github.com/MgeeeeK/GSoC2020/blob/master/gsoc2020_report_mragank_shekhar.md#adding-distance-based-weights-object-support)
+4. [Finalzing base raster interface](https://github.com/MgeeeeK/GSoC2020/blob/master/gsoc2020_report_mragank_shekhar.md#adding-tests-documentation-example-notebook-and-finalizing-base-raster-interface)
+5. [Identifying areas to optimize](https://github.com/MgeeeeK/GSoC2020/blob/master/gsoc2020_report_mragank_shekhar.md#identifying-areas-to-optimize-for-adding-support-for-large-rasters)
 
 **Detailed Summary**
 
@@ -239,7 +239,7 @@ Contents:
 
 **Quick Overview**
 
-Main goals achieved during this phase:
+Main goals achieved:
 
 - Shifted away from `lat2SW`-based weight builder.
 - Redesigned sparse matrix builder based on `COO_matrix`.
@@ -250,8 +250,8 @@ Main goals achieved during this phase:
 
 Pull Requests, Commits and Issues created:
 
-- **PR:** **[open]** [Optimized raster-based weights builder](https://github.com/pysal/libpysal/pull/343)
-- **PR:** **[open]** [Added raster weights plotting functionality](https://github.com/pysal/splot/pull/113)
+- **PR:** **[WIP]** [Optimized raster-based weights builder](https://github.com/pysal/libpysal/pull/343)
+- **PR:** **[WIP]** [Added raster weights plotting functionality](https://github.com/pysal/splot/pull/113)
 - **Issue:** **[open]** [Distance Band functionality for Raster Interface weights](https://github.com/pysal/libpysal/issues/328)
 - **Issue:** **[open]** [plotting for `libpysal` raster functionality](https://github.com/pysal/splot/issues/112)
 
@@ -261,9 +261,9 @@ Blog posts published:
 
 Contents:
 
-1. [Moving on from `lat2SW`-based sparse weight builder](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#moving-on-from-lat2sw-based-which-uses-dia_matrix-to-new-coo_matrix-based-sparse-weight-builder)
-2. [Optimizing the addition of higher-order neighbors](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#optimizing-the-addition-of-higher-order-neighbors)
-3. [Adding visualization support for the interface](https://gist.github.com/MgeeeeK/b6681333b0569b7d0130d795fd064a22#adding-visualization-support-for-the-interface)
+1. [Moving on from `lat2SW`-based sparse weight builder](https://github.com/MgeeeeK/GSoC2020/blob/master/gsoc2020_report_mragank_shekhar.md#moving-on-from-lat2sw-based-which-uses-dia_matrix-to-new-coo_matrix-based-sparse-weight-builder)
+2. [Optimizing the addition of higher-order neighbors](https://github.com/MgeeeeK/GSoC2020/blob/master/gsoc2020_report_mragank_shekhar.md#optimizing-the-addition-of-higher-order-neighbors)
+3. [Adding visualization support for the interface](https://github.com/MgeeeeK/GSoC2020/blob/master/gsoc2020_report_mragank_shekhar.md#adding-visualization-support-for-the-interface)
 
 **Detailed Summary**
 
@@ -295,7 +295,7 @@ Contents:
    ![Fig. 4](https://user-images.githubusercontent.com/40512095/91647911-7d77bf00-ea7e-11ea-844e-8dd547057a35.png)
    After completion of these methods, a pull request was created targeting the master branch of `libpysal` which added optimized weights builder and `higher_order` functionality. This pull request describes how these approaches are different from each other:
 
-   - **[open]** [Optimized raster-based weights builder](https://github.com/pysal/libpysal/pull/343)
+   - **[WIP]** [Optimized raster-based weights builder](https://github.com/pysal/libpysal/pull/343)
 
 **This marked the end of the optimization phase.**
 
@@ -304,7 +304,7 @@ Contents:
    Along with optimization work, we also worked on adding the support for plotting functionality for a raster-based weight object. This required some changes inside the `plot_spatial_weights` method, mainly making it work with sparse weight objects instead of dense weight objects and adding a `da` argument for passing `DataArray` object.
 
    - **Issue:** **[open]** [plotting for `libpysal` raster functionality](https://github.com/pysal/splot/issues/112)
-   - **PR:** **[open]** [Added raster weights plotting functionality](https://github.com/pysal/splot/pull/113)
+   - **PR:** **[WIP]** [Added raster weights plotting functionality](https://github.com/pysal/splot/pull/113)
 
    The visualization aspect of the project is still in progress, once this pull request gets reviewed. I'll add more enhancements which are listed in the issue.
 
@@ -321,6 +321,6 @@ As a computer science undergrad this project was a breath of fresh air for me si
 
 I like to thank my mentors Stefanie, Dani, Levi for taking the time to review the prs, clearing my doubts, and providing me with valuable feedback which helped me along the way of building this project. I also appreciate the work of other community members working on this cool library.
 
-I'll meet you in the new season of life after GSoC.
+I'll meet you in the new season of surviving 2020.
 
 Mragank Shekhar
